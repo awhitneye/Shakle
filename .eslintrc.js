@@ -3,7 +3,7 @@ module.exports = {
     "browser": true,      // browser global variables.
     "node": false,        // Node.js global variables and Node.js-specific rules.
     "worker": false,      // web workers global variables.
-    "amd": false,         // defines require() and define() as global variables as per the amd spec.
+    "amd": true,         // defines require() and define() as global variables as per the amd spec.
     "mocha": false,       // adds all of the Mocha testing global variables.
     "jasmine": false,     // adds all of the Jasmine testing global variables for version 1.3 and 2.0.
     "phantomjs": false,   // phantomjs global variables.
@@ -28,7 +28,7 @@ module.exports = {
       "destructuring": false,                    // enable destructuring
       "forOf": false,                            // enable for-of loops
       "generators": false,                       // enable generators
-      "modules": false,                          // enable modules and global strict mode
+      "modules": true,                          // enable modules and global strict mode
       "objectLiteralComputedProperties": false,  // enable computed object literal property names
       "objectLiteralDuplicateProperties": false, // enable duplicate object literal properties in strict mode
       "objectLiteralShorthandMethods": false,    // enable object literal shorthand methods
@@ -65,7 +65,7 @@ module.exports = {
     "no-func-assign": 0,           // disallow overwriting functions written as function declarations
     "no-inner-declarations": 2,    // disallow function or variable declarations in nested blocks
     "no-invalid-regexp": 0,        // disallow invalid regular expression strings in the RegExp constructor
-    "no-irregular-whitespace": 0,  // disallow irregular whitespace outside of strings and comments
+    "no-irregular-whitespace": 1,  // disallow irregular whitespace outside of strings and comments
     "no-negated-in-lhs": 0,        // disallow negation of the left operand of an in expression
     "no-obj-calls": 0,             // disallow the use of object properties of the global object (Math and JSON) as functions
     "no-regex-spaces": 0,          // disallow multiple spaces in a regular expression literal
@@ -172,7 +172,7 @@ module.exports = {
     "func-style": [1, 'expression'],       // enforces use of function declarations or expressions (off by default)
     "indent": [2, 2],                      // this option sets a specific tab width for your code (off by default)
     "key-spacing": 1,                      // enforces spacing between keys and values in object literal properties
-    "lines-around-comment": 0,             // enforces empty lines around comments (off by default)
+    "lines-around-comment": 1,             // enforces empty lines around comments (off by default)
     "linebreak-style": 0,                  // disallow mixed 'LF' and 'CRLF' as linebreaks (off by default)
     "max-nested-callbacks": 0,             // specify the maximum depth callbacks can be nested (off by default)
     "new-cap": 0,                          // require a capital letter for constructors
@@ -181,10 +181,10 @@ module.exports = {
     "newline-after-var": 0,                // allow/disallow an empty newline after var statement (off by default)
     "no-array-constructor": 2,             // disallow use of the Array constructor
     "no-continue": 0,                      // disallow use of the continue statement (off by default)
-    "no-inline-comments": 0,               // disallow comments inline after code (off by default)
-    "no-lonely-if": 0,                     // disallow if as the only statement in an else block (off by default)
+    "no-inline-comments": 1,               // disallow comments inline after code (off by default)
+    "no-lonely-if": 2,                     // disallow if as the only statement in an else block (off by default)
     "no-mixed-spaces-and-tabs": 2,         // disallow mixed spaces and tabs for indentation
-    "no-multiple-empty-lines": 0,          // disallow multiple empty lines (off by default)
+    "no-multiple-empty-lines": 1,          // disallow multiple empty lines (off by default)
     "no-nested-ternary": 0,                // disallow nested ternary expressions (off by default)
     "no-new-object": 2,                    // disallow use of the Object constructor
     "no-spaced-func": 0,                   // disallow space between function identifier and application
@@ -208,7 +208,7 @@ module.exports = {
     "space-infix-ops": 1,                  // require spaces around operators
     "space-return-throw-case": 0,          // require a space after return, throw, and case
     "space-unary-ops": 0,                  // require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
-    "spaced-comment": 0,                   // require or disallow a space immediately following the                                                  // or /* in a comment (off by default)
+    "spaced-comment": 1,                   // require or disallow a space immediately following the                                                  // or /* in a comment (off by default)
     "wrap-regex": 0,                       // require regex literals to be wrapped in parentheses (off by default)
 
 

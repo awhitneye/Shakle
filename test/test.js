@@ -1,6 +1,6 @@
-//include chai
+// include chai
 var chai = require('chai');
-//define assesion library as variable
+// define assesion library as variable
 var expect = chai.expect;
-//include the file to unit test
-
+// include the file to unit test
+var Shakle = require('../lib/shakle.js');
