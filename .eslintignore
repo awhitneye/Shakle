@@ -1,4 +1,4 @@
-d.eslint*
+.eslint*
 **/node_modules
 **/bower_components
 **/*.min.js
