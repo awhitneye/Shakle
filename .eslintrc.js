@@ -1,6 +1,20 @@
 module.exports = {
   env: {
-    'es6': true
+    "browser": true,      // browser global variables.
+    "node": false,        // Node.js global variables and Node.js-specific rules.
+    "worker": false,      // web workers global variables.
+    "amd": false,         // defines require() and define() as global variables as per the amd spec.
+    "mocha": false,       // adds all of the Mocha testing global variables.
+    "jasmine": false,     // adds all of the Jasmine testing global variables for version 1.3 and 2.0.
+    "phantomjs": false,   // phantomjs global variables.
+    "jquery": false,      // jquery global variables.
+    "prototypejs": false, // prototypejs global variables.
+    "shelljs": false,     // shelljs global variables.
+    "meteor": false,      // meteor global variables.
+    "mongo": false,       // mongo global variables.
+    "applescript": false, // applescript global variables.
+    "es6": true,          // enable all ECMAScript 6 features except for modules.
+
   },
   parserOptions: {
     sourceType: 'module',
@@ -28,7 +42,7 @@ module.exports = {
       "templateStrings": false,                  // enable template strings
       "unicodeCodePointEscapes": false,          // enable code point escapes
       "globalReturn": false,                     // allow return statements in the global scope
-      "jsx": false                               // enable JSX
+      "jsx": true                               // enable JSX
     }
   },
   rules: {
@@ -47,7 +61,7 @@ module.exports = {
     "no-ex-assign": 0,             // disallow assigning to the exception in a catch block
     "no-extra-boolean-cast": 0,    // disallow double-negation boolean casts in a boolean context
     "no-extra-parens": 0,          // disallow unnecessary parentheses (off by default)
-    "no-extra-semi": 1,            // disallow unnecessary semicolons
+    "no-extra-semi": 2,            // disallow unnecessary semicolons
     "no-func-assign": 0,           // disallow overwriting functions written as function declarations
     "no-inner-declarations": 2,    // disallow function or variable declarations in nested blocks
     "no-invalid-regexp": 0,        // disallow invalid regular expression strings in the RegExp constructor
@@ -73,7 +87,7 @@ module.exports = {
     "default-case": 0,          // require default case in switch statements (off by default)
     "dot-notation": 0,          // encourages use of dot notation whenever possible
     "dot-location": 0,          // enforces consistent newlines before or after dots (off by default)
-    "eqeqeq": 0,                // require the use of === and !==
+    "eqeqeq": [2, 'smart'],     // require the use of === and !==
     "guard-for-in": 0,          // make sure for-in loops have an if statement (off by default)
     "no-alert": 0,              // disallow the use of alert, confirm, and prompt
     "no-caller": 0,             // disallow use of arguments.caller or arguments.callee
@@ -91,7 +105,7 @@ module.exports = {
     "no-labels": 0,             // disallow use of labeled statements
     "no-lone-blocks": 0,        // disallow unnecessary nested blocks
     "no-loop-func": 0,          // disallow creation of functions within loops
-    "no-multi-spaces": 0,       // disallow use of multiple spaces
+    "no-multi-spaces": 1,       // disallow use of multiple spaces
     "no-multi-str": 0,          // disallow use of multiline strings
     "no-native-reassign": 0,    // disallow reassignments of native objects
     "no-new-func": 0,           // disallow use of new operator for Function object
@@ -132,7 +146,7 @@ module.exports = {
     "no-undef-init": 0,              // disallow use of undefined when initializing variables
     "no-undefined": 0,               // disallow use of undefined variable (off by default)
     "no-unused-vars": 0,             // disallow declaration of variables that are not used in the code
-    "no-use-before-define": 0,       // disallow use of variables before they are defined
+    "no-use-before-define": [2, { 'functions': false }], // disallow use of variables before they are defined
 
 
     // Node.js
@@ -147,17 +161,17 @@ module.exports = {
 
     // Stylistic Issues
     "array-bracket-spacing": [2, "never"], // enforce spacing inside array brackets (off by default)
-    "brace-style": 0,                      // enforce one true brace style (off by default)
-    "camelcase": 0,                        // require camel case names
-    "comma-spacing": 0,                    // enforce spacing before and after comma
-    "comma-style": 0,                      // enforce one true comma style (off by default)
+    "brace-style": [2, '1tbs', { 'allowSingleLine': true }], // enforce one true brace style (off by default)
+    "camelcase": 2,                        // require camel case names
+    "comma-spacing": 1,                    // enforce spacing before and after comma
+    "comma-style": [2, 'last'],            // enforce one true comma style (off by default)
     "computed-property-spacing": 0,        // require or disallow padding inside computed properties (off by default)
     "consistent-this": 0,                  // enforces consistent naming when capturing the current execution context (off by default)
     "eol-last": 0,                         // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0,                       // require function expressions to have a name (off by default)
-    "func-style": 0,                       // enforces use of function declarations or expressions (off by default)
+    "func-style": [1, 'expression'],       // enforces use of function declarations or expressions (off by default)
     "indent": [2, 2],                      // this option sets a specific tab width for your code (off by default)
-    "key-spacing": 0,                      // enforces spacing between keys and values in object literal properties
+    "key-spacing": 1,                      // enforces spacing between keys and values in object literal properties
     "lines-around-comment": 0,             // enforces empty lines around comments (off by default)
     "linebreak-style": 0,                  // disallow mixed 'LF' and 'CRLF' as linebreaks (off by default)
     "max-nested-callbacks": 0,             // specify the maximum depth callbacks can be nested (off by default)
@@ -178,20 +192,20 @@ module.exports = {
     "no-trailing-spaces": 0,               // disallow trailing whitespace at the end of lines
     "no-underscore-dangle": 0,             // disallow dangling underscores in identifiers
     "object-curly-spacing": [2, "never"],  // require or disallow padding inside curly braces (off by default)
-    "one-var": 0,                          // allow just one var statement per function (off by default)
+    "one-var": [1, { 'uninitialized': 'never', 'initialized': 'never' }], // allow just one var statement per function (off by default)
     "operator-assignment": 0,              // require assignment operator shorthand where possible or prohibit it entirely (off by default)
     "operator-linebreak": 0,               // enforce operators to be placed before or after line breaks (off by default)
     "padded-blocks": 0,                    // enforce padding within blocks (off by default)
     "quote-props": 0,                      // require quotes around object literal property names (off by default)
-    "quotes": 0,                           // specify whether double or single quotes should be used
-    "semi-spacing": 0,                     // enforce spacing before and after semicolons
+    "quotes": [1, 'single'],               // specify whether double or single quotes should be used
+    "semi-spacing": 1,                     // enforce spacing before and after semicolons
     "semi": 2,                             // require or disallow use of semicolons instead of ASI
     "sort-vars": 0,                        // sort variables within the same declaration block (off by default)
     "space-after-keywords": 0,             // require a space after certain keywords (off by default)
-    "space-before-blocks": 0,              // require or disallow space before blocks (off by default)
+    "space-before-blocks": 1,              // require or disallow space before blocks (off by default)
     "space-before-function-paren": 0,      // require or disallow space before function opening parenthesis (off by default)
     "space-in-parens": 0,                  // require or disallow spaces inside parentheses (off by default)
-    "space-infix-ops": 0,                  // require spaces around operators
+    "space-infix-ops": 1,                  // require spaces around operators
     "space-return-throw-case": 0,          // require a space after return, throw, and case
     "space-unary-ops": 0,                  // require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
     "spaced-comment": 0,                   // require or disallow a space immediately following the                                                  // or /* in a comment (off by default)
