@@ -14,10 +14,10 @@ describe('Shakle', function() {
     expect(Shakle).to.exist;
   });
 
-  it('the function should return hte string "hello"', function () {
-    var promise = Shakle;
-    expect(promise()).to.equal('hello');
-  });
+  // it('the function should return the string "hello"', function () {
+  //   var promise = Shakle;
+  //   expect(promise()).to.equal('hello');
+  // });
 
  });
 

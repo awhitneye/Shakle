@@ -1,10 +1,10 @@
 module.exports = {
   env: {
     "browser": true,      // browser global variables.
-    "node": false,        // Node.js global variables and Node.js-specific rules.
+    "node": true,         // Node.js global variables and Node.js-specific rules.
     "worker": false,      // web workers global variables.
-    "amd": true,         // defines require() and define() as global variables as per the amd spec.
-    "mocha": false,       // adds all of the Mocha testing global variables.
+    "amd": true,          // defines require() and define() as global variables as per the amd spec.
+    "mocha": true,        // adds all of the Mocha testing global variables.
     "jasmine": false,     // adds all of the Jasmine testing global variables for version 1.3 and 2.0.
     "phantomjs": false,   // phantomjs global variables.
     "jquery": false,      // jquery global variables.
@@ -28,7 +28,7 @@ module.exports = {
       "destructuring": false,                    // enable destructuring
       "forOf": false,                            // enable for-of loops
       "generators": false,                       // enable generators
-      "modules": true,                          // enable modules and global strict mode
+      "modules": true,                           // enable modules and global strict mode
       "objectLiteralComputedProperties": false,  // enable computed object literal property names
       "objectLiteralDuplicateProperties": false, // enable duplicate object literal properties in strict mode
       "objectLiteralShorthandMethods": false,    // enable object literal shorthand methods
