@@ -23,5 +23,9 @@ describe('Shakle', function() {
 
 });
 
+// range class
+// lrucache
+// asyncmap
+
 // SPECS: 
 //
