@@ -5,7 +5,7 @@ module.exports = {
     "worker": false,      // web workers global variables.
     "amd": true,          // defines require() and define() as global variables as per the amd spec.
     "mocha": true,        // adds all of the Mocha testing global variables.
-    "jasmine": false,     // adds all of the Jasmine testing global variables for version 1.3 and 2.0.
+    "jasmine": true,     // adds all of the Jasmine testing global variables for version 1.3 and 2.0.
     "phantomjs": false,   // phantomjs global variables.
     "jquery": false,      // jquery global variables.
     "prototypejs": false, // prototypejs global variables.
