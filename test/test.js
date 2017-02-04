@@ -15,19 +15,23 @@ describe('Shakle', function () {
     });
 
     it('should have a "showCallStack" property', function() {
-          expect(Shakle).to.have.property('showCallStack');
+      expect(Shakle).to.have.property('showCallStack');
     });
 
     it('should have a "showCallStack" property innitially set to false', function() {
-          expect(Shakle.showCallStack).to.be.false;
+      expect(Shakle.showCallStack).to.be.false;
     });
 
     it('should have a "promisify" method', function () {
-      expect(Shakle).to.have.property('promisify')
+      expect(Shakle).to.have.property('promisify');
     });
 
-    it('should have a "all" method', function () {
-      expect(Shakle).to.have.property('all')
+    it('should have a "resolveAll" method', function () {
+      expect(Shakle).to.have.property('resolveAll');
+    });
+
+    it('should have a "chainAll" method', function () {
+      expect(Shakle).to.have.property('chainAll');
     });
 
   });
