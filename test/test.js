@@ -39,7 +39,7 @@ describe('Shakle', function () {
   describe ('instantiation', function () {
     var shakle = new Shakle();
 
-    it('should have a test property', function () {
+    it('should have a state property', function () {
       expect(shakle).to.have.property('state');
     });
 
@@ -49,15 +49,16 @@ describe('Shakle', function () {
 
     // it('should be called eventually', function (done) {
     //   setTimeout(function () {
-    //     expect(true).to.be.true
-    //     done()
-    //   }, 500)
-    // })
+    //     expect(true).to.be.true;
+    //     done();
+    //   }, 500);
+    // });
+    // // exmple of how to use done() for async testing
 
     var shakledFn1 = function (input) {
 
       // inside a timeout
-      //does something with the input
+      // does something with the input
 
       // new Shakle(function (resolve, reject) {
 
@@ -66,12 +67,12 @@ describe('Shakle', function () {
       //   })
       // });
 
-    }
+    };
 
     var shakledFn2 = function (input) {
 
       // inside a timeout
-      //does something with the input
+      // does something with the input
 
       // new Shakle(function (resolve, reject) {
 
@@ -80,7 +81,7 @@ describe('Shakle', function () {
       //   })                                                        // PROBABLY BY JUST CALLING IT IN IAN IT STATEMENT AND PROBING THE PROMISE THAT GETS RETURNED 
       // });
 
-    }
+    };
 
     // THIS WILL HAVE TO BE DONE IN CHUNKS, AN "IT" STATEMENT WRAPPING EACK GROWING CHAIN SO YOU CAN USE THE DONE() TRICK EACH TIME YOU ADD SOMETHING TO THE TEST
     
@@ -107,13 +108,13 @@ describe('Shakle', function () {
     //     }) 
     //   })
 
-  })
+  });
 
   describe('rejection', function () {
     // do the same as resolution but pass in the wrong data
 
-    //then set the showCallStack to true and see test for call stack logging
-  })
+    // then set the showCallStack to true and see test for call stack logging
+  });
 
   describe('method:', function () {
 
@@ -129,9 +130,9 @@ describe('Shakle', function () {
 
       it('should resolve an array', function () {
         expect(false).to.be.true;
-      })
+      });
 
-    })
+    });
 
   });
 
