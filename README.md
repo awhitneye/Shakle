@@ -13,7 +13,7 @@
   - [The Shakle (Promise) class](https://github.com/dylanlrrb/Shakle/blob/master/README.md#usage)
   - [The .promisify() method](https://github.com/dylanlrrb/Shakle/blob/master/README.md#promisify)
   - [The .raceAll() method](https://github.com/dylanlrrb/Shakle/blob/master/README.md#raceall)
-  - [The .resolveAll method](https://github.com/dylanlrrb/Shakle/blob/master/README.md#resolveall)
+  - [The .resolveAll() method](https://github.com/dylanlrrb/Shakle/blob/master/README.md#resolveall)
 
 ## Usage
 ---
