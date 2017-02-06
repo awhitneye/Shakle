@@ -85,13 +85,12 @@ describe('Shakle', function () {
     };
 
     // THIS WILL HAVE TO BE DONE IN CHUNKS, AN "IT" STATEMENT WRAPPING EACK GROWING CHAIN SO YOU CAN USE THE DONE() TRICK EACH TIME YOU ADD SOMETHING TO THE TEST
-    
-
-    xit('of first shakled function should return a promise object', function (done) {
+  
+    xit('(of first) shakled function should return a promise object', function (done) {
       expect(shakledFn1('test.txt', done) instanceof Shakle).to.be.true;
     });
 
-    xit('of second shakled function should return a promise object', function (done) {
+    xit('(of second) shakled function should return a promise object', function (done) {
       expect(shakledFn2('{"one": 1, "two": 2, "three": 3}', done) instanceof Shakle).to.be.true;
     });
 
