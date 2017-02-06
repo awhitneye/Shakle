@@ -40,7 +40,7 @@ describe('Shakle', function () {
   describe ('instantiation', function () {
     var shakle = new Shakle();
 
-    xit('should be pseudoclassical', function () {
+    it('should be pseudoclassical', function () {
       expect(shakle instanceof Shakle).to.be.true;
     });
 
