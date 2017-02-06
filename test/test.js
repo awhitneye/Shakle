@@ -44,7 +44,7 @@ describe('Shakle', function () {
       expect(shakle instanceof Shakle).to.be.true;
     });
 
-    it('should have a state property', function () {
+    xit('should have a state property', function () {
       expect(shakle).to.have.property('state');
     });
 
@@ -60,7 +60,7 @@ describe('Shakle', function () {
     // });
     // // exmple of how to use done() for async testing
 
-    var shakledFn1 = function (input, done) {
+    var shakledFn1 = function (input) {
       return new Shakle(function (resolve, reject) {
         fs.readFile(input, 'utf-8', function (err, data) {
           if (err) {
@@ -68,18 +68,16 @@ describe('Shakle', function () {
           } else {
             resolve(data);
           }
-          if (done) {done();}
         });
       });
     };
 
-    var shakledFn2 = function (input, done) {
+    var shakledFn2 = function (input) {
       return new Shakle(function (resolve, reject) {
         setTimeout(function () {                               // THE CHECKING OF THE VARIBLES/ METHODS IN THE PROMISE WILL HAVE TO BE DONE NOT HERE
           var result = JSON.parse(input);                      // WILL HAVE TO DO IT SIMILARLY TO BELOW, CHECKING ONE THING AT A TIME BY WRAPPING THE DUPLICATED CHAIN IN INDIVIDUAL IT STATEMENTS DEPENDING ON WHATS BEING TESTED
           result = +result.one + +result.two + +result.three;  // PROBABLY BY JUST CALLING IT IN IAN IT STATEMENT AND PROBING THE PROMISE THAT GETS RETURNED 
           resolve(result);
-          if (done) {done();}
         }, 200);
       });
     };
