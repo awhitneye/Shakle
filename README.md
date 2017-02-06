@@ -24,6 +24,7 @@ var Shakle = require('shakle.js');
 ```
 
 Now you can start chaining together your TODO!
+
 (get it? 'chain together'?? shakle??? ...shutup, it's clever.)
 ```javascript
 var resolveValue = function (value) {
