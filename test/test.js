@@ -117,7 +117,7 @@ describe('Shakle', function () {
     });
 
 
-    xit('should resolve the correct data from promisified timeout function', function (done) {
+    it('should resolve the correct data from promisified timeout function', function (done) {
       shakledFn2('{"one": 1, "two": 2, "three": 3}')
         .then(function (data) {
           expect(data).to.equal(6);
