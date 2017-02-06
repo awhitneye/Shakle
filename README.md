@@ -167,7 +167,9 @@ shakledReadFile('tHe_WRonG_filEPAth.tXt')
     
 // logs the error 
 ```
-The Error will be passed all the way down the chain, one .catch()at the end will catch all handled errors
+The callback passed into .catch() will be invoked with the argument (error) passed into reject 
+
+The Error will be passed all the way down the chain, one .catch() at the end will catch all handled errors
 ```javascript
 shakledReadFile('tHe_WRonG_filEPAth.tXt')
     .then(doubler)
@@ -207,7 +209,7 @@ var wait = function (time) {
 ###### I could see a possible use case for this where a client has several distributed servers it could connect to, so it pings all of them at once and connects to the one that is fastest to respond
 ---
 ## .resolveAll()
-.resolveAll() is a function similar to race, but rather than resolving only the fastest, it resolves an array containing the values from the resolution of all the promises passed in
+.resolveAll() is a function similar to race, but rather than resolving only the fastest, it resolves an array containing the values from the resolution from each of the promises passed in
 
 .resolveAll() also ignores functions in the array that do not return Promises when invoked
 
