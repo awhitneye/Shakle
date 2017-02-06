@@ -5,7 +5,7 @@
 
 ---
 
-### Shakle is a lightwihgt module that gives you the access to a Promise class and some useful methods. All in pure Javascript!
+### Shakle is a lightwihgt module that gives you access to a Promise class and some useful methods. All in pure Javascript!
 
 > DISCLAIMER: The promise class provided almost meets all the specs outlined in [Promise/A+ spec](https://promisesaplus.com/). While this module is completly functional, it is primarily for educational purposes.
 
@@ -25,7 +25,7 @@ var Shakle = require('shakle.js');
 
 Now you can start chaining together your TODO!
 
-(get it? 'chain together'?? shakle??? ...shutup, it's clever.)
+(get it?  'chain together'?? shakle??? ...shutup, it's clever.)
 ```javascript
 var resolveValue = function (value) {
     return new Shakle(function(resolve) {
@@ -42,7 +42,7 @@ resolveValue(2)
     
 //logs 2 to the console
 ```
-What makes Promises so special is that they invoke the callback passed to .then() on the resolved value WHENEVER IT COMES BACK!
+What makes Promises so special is that they invoke the callback passed to .then() on the resolved value WHENEVER IT HAPPENS TO COME BACK!
 
 An example is in order:
 ```javascript
@@ -62,7 +62,7 @@ resolveValue(2)
 //logs 2 to the console ONE SECOND LATER!
 ```
 
-This is a great way to deal with async functions in a clean, non-blocking way
+This is a great way to deal with async functions in a clean, easy to read, non-blocking way
 
 Another powerful feature of promises is that the .then() method always returns another promise. 
 
@@ -133,7 +133,7 @@ shakledReadFile('alphabet.txt', 'utf-8')
     .then(sort)
     .then(doSomethingElse)
 ```
-Keep in mind that the callback that .promisify() abstracts away needs to be in the form:
+Keep in mind that the callback that .promisify() abstracts away needs to be in the format below:
 ```javascript
 function(err, result) {
     // ...
@@ -143,7 +143,7 @@ function(err, result) {
 ---
 One other method on a promise object along with .then() is .catch()
 
-.catch() accepts a callback that does something with errors that are thrown in the callback chain\
+.catch() accepts a callback that does something with errors that are thrown in the callback chain
 
 Lets look at how .catch() works:
 ```javascript
@@ -213,7 +213,7 @@ var wait = function (time) {
 
 .resolveAll() also ignores functions in the array that do not return Promises when invoked
 
-ALSO! The promises are resolved in 'parallel' rather than in series so the resolution will only take as long as the slowest promise to resolve.
+ALSO! The promises are resolved in 'parallel' rather than in series so the resolution will only take as long as the slowest promise to resolve
 
 Observe:
 ```javascript
@@ -222,7 +222,7 @@ Shakle.resolveAll([wait(200), wait(300), wait(100), wait(50), wait(150)])
     console.log(value)
   });
   
- // will log '[50,100,150,200,300]'
+// will log '[50,100,150,200,300]'
 ```
 ###### handled errors are excluded from the resolved array but are not passed the .catch() callback... I'm working on this.
 ###### unexpected errors may cause .resolveAll() to never resolve... I'm working on this also.
