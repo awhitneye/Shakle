@@ -44,7 +44,7 @@ describe('Shakle', function () {
       expect(shakle instanceof Shakle).to.be.true;
     });
 
-    xit('should have a "then" property', function () {
+    it('should have a "then" property', function () {
       expect(shakle).to.have.property('then');
     });
 
