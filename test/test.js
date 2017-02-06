@@ -15,14 +15,6 @@ describe('Shakle', function () {
       expect(Shakle).to.exist;
     });
 
-    xit('should have a "showCallStack" property', function() {
-      expect(Shakle).to.have.property('showCallStack');
-    });
-
-    xit('should have a "showCallStack" property initially set to false', function() {
-      expect(Shakle.showCallStack).to.be.false;
-    });
-
     it('should have a "promisify" method', function () {
       expect(Shakle).to.have.property('promisify');
     });
@@ -176,7 +168,6 @@ describe('Shakle', function () {
           if (err) {
             reject(err);
           } else {
-            console.log(data);
             resolve(data);
           }
         });
@@ -194,76 +185,23 @@ describe('Shakle', function () {
     };
 
 
-    it('should reject error data from promisified fileRead function', function (done) {
+    it('should reject handled errors', function (done) {
       shakledFn1('/tes.txt')
         .then()
         .catch(function (error) {
           console.log(error);
-          expect(true).to.be.true;
-          done();
-        });
-    });
-
-    xit('should reject error data from promisified timeout function', function (done) {
-      shakledFn2('zoinks')
-        .then(function () {})
-        .catch(function (error) {
           expect(error).to.contain('Error:');
           done();
         });
     });
 
-    xit('should reject error data from non-promisified function', function (done) {
-      shakledFn1('/test.txt')
-        .then(function (data) {
-          return data.test;
-        })
-        .catch(function (error) {
-          expect(error).to.contain('Error:');
-          done();
-        });
-    });
-
-    xit('should pass errors down the chain', function (done) {
+    it('should pass errors down the chain', function (done) {
       shakledFn1('/tes.txt')
         .then(shakledFn2)
         .catch(function (error) {
+          console.log(error);
           expect(error).to.contain('Error:');
           done();
-        });
-    });
-
-    // Shakle.showCallStack = true; // is this hoisted or something? it makes a test at the top fail...
-
-    // var shakledFn1 = function (input, done) {
-    //   return new Shakle(function (resolve, reject) {
-    //     fs.readFile(input, 'utf-8', function (err, data) {
-    //       if (err) {
-    //         reject(err);
-    //       } else {
-    //         resolve(data);
-    //       }
-    //       if (done) {done();}
-    //     });
-    //   });
-    // };
-
-    // var shakledFn2 = function (input, done) {
-    //   return new Shakle(function (resolve, reject) {
-    //     setTimeout(function () {                               
-    //       var result = JSON.parse(input);                      
-    //       result = +result.one + +result.two + +result.three;  
-    //       resolve(result);
-    //       if (done) {done();}
-    //     }, 200);
-    //   });
-    // };
-
-    xit('should show the full error call stack when "showCallStack" flag is set to true', function (done) {
-      shakledFn1('tes.txt')
-        .then(shakledFn2)
-        .catch(function (error) {
-          expect(error).to.contain('Error:');
         });
     });
 
