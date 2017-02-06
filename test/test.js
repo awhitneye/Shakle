@@ -314,33 +314,3 @@ describe('Shakle', function () {
   });
 
 });
-
-// var shakledFn1 = function (input) {
-//   return new Shakle(function (resolve) {
-//     fs.readFile(input, 'utf-8', function (err, data) {
-//       if (!err) {
-//         resolve(data);
-//       }
-//     });
-//   });
-// };
-
-
-// shakledFn1('test.txt')
-//   .then(function (data) {
-//     console.log(data);
-//   });
-
-// make sure the promises' variables change as expected during the lifecycle of the promise
-// check that the functions behave respond correctly in isolation, then together
-// NEED SOME SPIES TO SEE IF THE FUNCTIONS ARE BEHAVING CORRECTLY
-// need to check at each phase of the promise lifecycle, probably need to use the done() of stubs or something
-
-
-// range class
-// lrucache
-// asyncmap
-
-
-// SPECS: 
-//
