@@ -84,7 +84,7 @@ describe('Shakle', function () {
           var result = JSON.parse(input);                      
           result = +result.one + +result.two + +result.three;  
           resolve(result);
-        }, 200);
+        }, 100);
       });
     };
 
@@ -145,8 +145,8 @@ describe('Shakle', function () {
         });
     });
 
-    xit('should be able to handle a promise as a return value later in the chain', function (done) {
-      shakledFn1('test.txt')
+    it('should be able to handle a promise as a return value later in the chain', function (done) {
+      shakledFn1('/test.txt')
         .then(shakledFn2)
         .then(function (data) {
           expect(data).to.equal(6);
