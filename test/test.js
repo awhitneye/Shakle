@@ -81,11 +81,11 @@ describe('Shakle', function () {
     };
 
   
-    xit('(of first) shakled function should return a promise object', function () {
+    it('(of first) shakled function should return a promise object', function () {
       expect(shakledFn1('test.txt') instanceof Shakle).to.be.true;
     });
 
-    xit('(of second) shakled function should return a promise object', function () {
+    it('(of second) shakled function should return a promise object', function () {
       expect(shakledFn2('{"one": 1, "two": 2, "three": 3}') instanceof Shakle).to.be.true;
     });
 
