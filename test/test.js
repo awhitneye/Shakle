@@ -135,6 +135,16 @@ describe('Shakle', function () {
         });
     });
 
+    it('callback to then should be optional', function (done) {
+      shakledFn2('{"one": 1, "two": 2, "three": 3}')
+        .then()
+        .then(doubler)
+        .then(function (value) {
+          expect(value).to.equal(12);
+          done();
+        });
+    });
+
     xit('should be able to handle a promise as a return value later in the chain', function (done) {
       shakledFn1('test.txt')
         .then(shakledFn2)
