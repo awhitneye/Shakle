@@ -125,12 +125,13 @@ describe('Shakle', function () {
         });
     });
 
-    xit('should chain non-promisified functions passed into .then()', function (done) {
+    it('should chain non-promisified functions passed into .then()', function (done) {
       shakledFn2('{"one": 1, "two": 2, "three": 3}')
         .then(doubler)
         .then(doubler)
         .then(function (value) {
           expect(value).to.equal(24);
+          done();
         });
     });
 
