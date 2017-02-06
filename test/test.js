@@ -23,15 +23,15 @@ describe('Shakle', function () {
       expect(Shakle.showCallStack).to.be.false;
     });
 
-    xit('should have a "promisify" method', function () {
+    it('should have a "promisify" method', function () {
       expect(Shakle).to.have.property('promisify');
     });
 
-    xit('should have a "promisifyAll" method', function () {
+    it('should have a "promisifyAll" method', function () {
       expect(Shakle).to.have.property('promisifyAll');
     });
 
-    xit('should have a "resolveAll" method', function () {
+    it('should have a "resolveAll" method', function () {
       expect(Shakle).to.have.property('resolveAll');
     });
 
