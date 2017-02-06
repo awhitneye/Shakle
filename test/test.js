@@ -155,9 +155,9 @@ describe('Shakle', function () {
     });
 
 
-    xit('should be able to chain multiple promisified functions', function (done) {
+    it('should be able to chain multiple promisified functions', function (done) {
 
-      shakledFn1('test.txt')
+      shakledFn1('/test.txt')
       .then(shakledFn2)
       .then(doubler)
       .then(function (data) {
@@ -172,10 +172,12 @@ describe('Shakle', function () {
 
     var shakledFn1 = function (input) {
       return new Shakle(function (resolve, reject) {
-        fs.readFile(input, 'utf-8', function (err, data) {
+        fs.readFile(__dirname + input, 'utf-8', function (err, data) {
           if (err) {
+            console.log(err);
             reject(err);
           } else {
+            console.log(data);
             resolve(data);
           }
         });
@@ -193,13 +195,17 @@ describe('Shakle', function () {
     };
 
 
-    xit('should reject error data from promisified fileRead function', function (done) {
-      shakledFn1('tes.txt')
-        .then(function () {})
-        .catch(function (error) {
+    it('should reject error data from promisified fileRead function', function (done) {
+      shakledFn1('/tes.txt')
+        .then(function () {done();}, function(error) {
+          console.log(error);
           expect(error).to.contain('Error:');
           done();
         });
+        // .catch(function (error) {
+        //   expect(error).to.contain('Error:');
+        //   done();
+        // });
     });
 
     xit('should reject error data from promisified timeout function', function (done) {
@@ -212,7 +218,7 @@ describe('Shakle', function () {
     });
 
     xit('should reject error data from non-promisified function', function (done) {
-      shakledFn1('test.txt')
+      shakledFn1('/test.txt')
         .then(function (data) {
           return data.test;
         })
@@ -223,7 +229,7 @@ describe('Shakle', function () {
     });
 
     xit('should pass errors down the chain', function (done) {
-      shakledFn1('tes.txt')
+      shakledFn1('/tes.txt')
         .then(shakledFn2)
         .catch(function (error) {
           expect(error).to.contain('Error:');
@@ -271,23 +277,23 @@ describe('Shakle', function () {
 
     describe('promisify', function () {
 
-      xit('should use an instance of its own class', function() {
+      xit('should promisify a function', function() {
         expect(Shakle.promisify()).to.have.property('state');
+      });
+
+    });
+
+    describe('promisifyAll', function () {
+
+      xit('should promisify evey function in the iterable object', function () {
+        expect(false).to.be.true;
       });
 
     });
 
     describe('resolveAll', function () {
 
-      xit('should resolve an array', function () {
-        expect(false).to.be.true;
-      });
-
-    });
-
-    describe('chainAll', function () {
-
-      xit('chain all the passed in functions', function () {
+      xit('resolve all the passed in functions', function () {
         expect(false).to.be.true;
       });
 
