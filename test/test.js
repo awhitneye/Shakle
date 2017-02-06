@@ -70,7 +70,7 @@ describe('Shakle', function () {
 
     var shakledFn1 = function (input) {
       return new Shakle(function (resolve) {
-        fs.readFile(input, 'utf-8', function (err, data) {
+        fs.readFile(__dirname + input, 'utf-8', function (err, data) {
           if (!err) {
             resolve(data);
           }
@@ -88,6 +88,7 @@ describe('Shakle', function () {
       });
     };
 
+
     it('should resolve a returned promise', function (done) {
       returnValue()
         .then(function (value) {
@@ -96,32 +97,25 @@ describe('Shakle', function () {
         });
     });
 
-  
+
     it('(of first) shakled function should return a promise object', function () {
-      expect(shakledFn1('test.txt') instanceof Shakle).to.be.true;
+      expect(shakledFn1('/test.txt') instanceof Shakle).to.be.true;
     });
+
 
     it('(of second) shakled function should return a promise object', function () {
       expect(shakledFn2('{"one": 1, "two": 2, "three": 3}') instanceof Shakle).to.be.true;
     });
 
 
-    xit('should be able to handle a promise as a return value in the chain', function (done) {
-      shakledFn1('test.txt')
-        .then(shakledFn2)
-        .then(function (data) {
-          expect(data).to.equal(6);
-          done();
-        });
-    });
-
-    xit('should resolve the correct data from promisified fileRead function', function (done) {
-      shakledFn1('test.txt')
+    it('should resolve the correct data from promisified fileRead function', function (done) {
+      shakledFn1('/test.txt')
         .then(function (data) {
           expect(data).to.equal('{"one": 1, "two": 2, "three": 3}');
           done();
         });
     });
+
 
     xit('should resolve the correct data from promisified timeout function', function (done) {
       shakledFn2('{"one": 1, "two": 2, "three": 3}')
@@ -139,6 +133,16 @@ describe('Shakle', function () {
           expect(value).to.equal(24);
         });
     });
+
+    xit('should be able to handle a promise as a return value later in the chain', function (done) {
+      shakledFn1('test.txt')
+        .then(shakledFn2)
+        .then(function (data) {
+          expect(data).to.equal(6);
+          done();
+        });
+    });
+
 
     xit('should be able to chain multiple promisified functions', function (done) {
 
@@ -281,6 +285,22 @@ describe('Shakle', function () {
   });
 
 });
+
+// var shakledFn1 = function (input) {
+//   return new Shakle(function (resolve) {
+//     fs.readFile(input, 'utf-8', function (err, data) {
+//       if (!err) {
+//         resolve(data);
+//       }
+//     });
+//   });
+// };
+
+
+// shakledFn1('test.txt')
+//   .then(function (data) {
+//     console.log(data);
+//   });
 
 // make sure the promises' variables change as expected during the lifecycle of the promise
 // check that the functions behave respond correctly in isolation, then together
