@@ -23,6 +23,10 @@ describe('Shakle', function () {
       expect(Shakle).to.have.property('promisifyAll');
     });
 
+    it('should have a "raceAll" method', function () {
+      expect(Shakle).to.have.property('resolveAll');
+    });
+
     it('should have a "resolveAll" method', function () {
       expect(Shakle).to.have.property('resolveAll');
     });
@@ -180,7 +184,7 @@ describe('Shakle', function () {
           var result = JSON.parse(input);                      
           result = +result.one + +result.two + +result.three;  
           resolve(result);
-        }, 200);
+        }, 100);
       });
     };
 
@@ -189,7 +193,6 @@ describe('Shakle', function () {
       shakledFn1('/tes.txt')
         .then()
         .catch(function (error) {
-          console.log(error);
           expect(error).to.contain('Error:');
           done();
         });
@@ -199,7 +202,6 @@ describe('Shakle', function () {
       shakledFn1('/tes.txt')
         .then(shakledFn2)
         .catch(function (error) {
-          console.log(error);
           expect(error).to.contain('Error:');
           done();
         });
@@ -210,9 +212,28 @@ describe('Shakle', function () {
   describe('method:', function () {
 
     describe('promisify', function () {
+      
+      var shakledReadFile = Shakle.promisify(fs.readFile);
+      
+      it('should return a function that returns a promise when invoked', function() {
+        expect(shakledReadFile('test.txt', 'utf-8') instanceof Shakle).to.be.true;
+      });
 
-      xit('should promisify a function', function() {
-        expect(Shakle.promisify()).to.have.property('state');
+      it('should resolve to the correct value', function(done) {
+        shakledReadFile(__dirname + '/test.txt', 'utf-8')
+          .then(function (value) {
+            expect(value).to.equal('{"one": 1, "two": 2, "three": 3}');
+            done();
+          });
+      });
+
+      it('should reject to handled errors', function(done) {
+        shakledReadFile(__dirname + 'test.txt', 'utf-8')
+          .then()
+          .catch(function (err) {
+            expect(err).to.contain('Error:');
+            done();
+          });
       });
 
     });
@@ -225,6 +246,14 @@ describe('Shakle', function () {
 
     });
 
+    describe('raceAll', function () {
+
+      xit('resolve the first value to be resolved', function () {
+        expect(false).to.be.true;
+      });
+
+    });
+
     describe('resolveAll', function () {
 
       xit('resolve all the passed in functions', function () {
@@ -232,6 +261,8 @@ describe('Shakle', function () {
       });
 
     });
+
+    
 
   });
 
