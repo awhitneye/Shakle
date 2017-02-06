@@ -19,10 +19,6 @@ describe('Shakle', function () {
       expect(Shakle).to.have.property('promisify');
     });
 
-    it('should have a "promisifyAll" method', function () {
-      expect(Shakle).to.have.property('promisifyAll');
-    });
-
     it('should have a "raceAll" method', function () {
       expect(Shakle).to.have.property('resolveAll');
     });
@@ -238,19 +234,33 @@ describe('Shakle', function () {
 
     });
 
-    describe('promisifyAll', function () {
-
-      xit('should promisify evey function in the iterable object', function () {
-        expect(false).to.be.true;
-      });
-
-    });
 
     describe('raceAll', function () {
 
-      xit('resolve the first value to be resolved', function () {
-        expect(false).to.be.true;
+      var wait = function (time) {
+        return new Shakle(function(resolve) {
+          setTimeout(function () {
+            resolve(time);
+          }, time);
+        });
+      };
+
+      it('resolve the first value to be resolved', function (done) {
+        Shakle.raceAll([wait(300), wait(200), wait(100)])
+          .then(function (value) {
+            expect(value).to.equal(100);
+            done();
+          });
       });
+
+      it('should ignore functions that do not return promises', function (done) {
+        Shakle.raceAll([wait(300), wait(200), (function() {return 100;})()])
+          .then(function (value) {
+            expect(value).to.deep.equal(200);
+            done();
+          });
+      });
+
 
     });
 
@@ -261,7 +271,6 @@ describe('Shakle', function () {
       });
 
     });
-
     
 
   });
