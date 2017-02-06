@@ -261,18 +261,56 @@ describe('Shakle', function () {
           });
       });
 
-
     });
 
     describe('resolveAll', function () {
 
-      xit('resolve all the passed in functions', function () {
-        expect(false).to.be.true;
+      var wait = function (time) {
+        return new Shakle(function(resolve) {
+          setTimeout(function () {
+            resolve(time);
+          }, time);
+        });
+      };
+
+      var shakledFn1 = function (input) {
+        return new Shakle(function (resolve, reject) {
+          fs.readFile(__dirname + input, 'utf-8', function (err, data) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          });
+        });
+      };
+
+      it('should resolve all the passed in functions', function (done) {
+        Shakle.resolveAll([wait(200), wait(300), wait(100), wait(50), wait(150)])
+          .then(function (value) {
+            expect(JSON.stringify(value)).to.equal('[50,100,150,200,300]');
+            done();
+          });
+      });
+
+      it('should resolve only functions that return promises', function (done) {
+        Shakle.resolveAll([(function(){return 200})(), wait(300), (function(){return 100})(), wait(50), wait(150)])
+          .then(function (value) {
+            expect(JSON.stringify(value)).to.equal('[50,150,300]');
+            done();
+          });
+      });
+
+      it('should count but not include rejections', function (done) {
+        Shakle.resolveAll([shakledFn1('./tes.txt'), wait(300), wait(100), wait(50), wait(150)])
+          .then(function (value) {
+            expect(JSON.stringify(value)).to.equal('[50,100,150,300]');
+            done();
+          });
       });
 
     });
     
-
   });
 
 });
