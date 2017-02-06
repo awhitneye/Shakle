@@ -11,7 +11,7 @@ describe('Shakle', function () {
 
   describe('export', function () {
  
-    xit('should exist', function () {
+    it('should exist', function () {
       expect(Shakle).to.exist;
     });
 
