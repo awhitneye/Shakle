@@ -60,6 +60,14 @@ describe('Shakle', function () {
       return value * 2;
     };
 
+    var returnValue = function () {
+      return new Shakle(function (resolve) {
+        setTimeout(function () {
+          resolve(100);
+        });
+      });
+    };
+
     var shakledFn1 = function (input) {
       return new Shakle(function (resolve) {
         fs.readFile(input, 'utf-8', function (err, data) {
@@ -80,6 +88,14 @@ describe('Shakle', function () {
       });
     };
 
+    it('should resolve a returned promise', function (done) {
+      returnValue()
+        .then(function (value) {
+          expect(value).to.equal(100);
+          done();
+        });
+    });
+
   
     it('(of first) shakled function should return a promise object', function () {
       expect(shakledFn1('test.txt') instanceof Shakle).to.be.true;
@@ -87,6 +103,16 @@ describe('Shakle', function () {
 
     it('(of second) shakled function should return a promise object', function () {
       expect(shakledFn2('{"one": 1, "two": 2, "three": 3}') instanceof Shakle).to.be.true;
+    });
+
+
+    xit('should be able to handle a promise as a return value in the chain', function (done) {
+      shakledFn1('test.txt')
+        .then(shakledFn2)
+        .then(function (data) {
+          expect(data).to.equal(6);
+          done();
+        });
     });
 
     xit('should resolve the correct data from promisified fileRead function', function (done) {
@@ -111,15 +137,6 @@ describe('Shakle', function () {
         .then(doubler)
         .then(function (value) {
           expect(value).to.equal(24);
-        });
-    });
-
-    xit('should be able to handle a promise as a return value in the chain', function (done) {
-      shakledFn1('test.txt')
-        .then(shakledFn2)
-        .then(function (data) {
-          expect(data).to.equal(6);
-          done();
         });
     });
 
