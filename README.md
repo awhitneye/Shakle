@@ -9,7 +9,7 @@
 
 > DISCLAIMER: The promise class provided almost meets all the specs outlined in [Promise/A+ spec](https://promisesaplus.com/). While this module is completly functional, it is primarily for educational purposes.
 
-##### You have access to:
+#### You have access to:
   - The Shakle (promise) class
   - The .promisify() method
   - The .raceAll() method
@@ -164,5 +164,41 @@ shakledReadFile('tHe_WRonG_filEPAth.tXt')
 ##### At this time, this implementation of .catch() only catches handled errors that are explicitly passed to reject. Other errors may be silent. This is something I am working on fixing :)
 ---
 ### .raceAll()
-Race all is an interesting built-in function that takes in an array 
+.raceAll() is an interesting built-in function that takes in an array of promises ready to be resolved and resolves the value of which ever one finishes first!
+.raceAll() ignores functions in the array that do not return promises when invoked
+Let me show ya:
+```sh
+var wait = function (time) {
+    return new Shakle(function(resolve) {
+        setTimeout(function () {
+            resolve(time);
+        }, time);
+    });
+ };
+ 
+ Shakle.raceAll([wait(300), wait(100), wait(200)])
+    .then(function(value) {
+        console.log(value);
+    });
+
+// will log 100 only because it is the first function to resolve
+```
+
+###### I could see a possible use case for this where a client has several distributed servers it could connect to, so it pings all of them at once and connects to the one that is fastest to respond
+---
+## .resolveAll()
+.resolveAll() is a function similar to race, but rather than resolving only the fastest, it resolves an array containing the values from the resolution of all the promises passed in
+.resolveAll() also ignores functions in the array that do not return Promises when invoked
+ALSO! The promises are resolved in 'parallel' rather than in series so the resolution will only take as long as the slowest promise to resolve.
+Observe:
+```sh
+
+```
+###### handled errors are excluded from the resolved array but are not passed the .catch() callback... I'm working on this.
+###### unexpected errors may cause .resolveAll() to never resolve... I'm working on this also.
+---
+### That's about it! thanks for checking out Shakle!
+
+
+
 
