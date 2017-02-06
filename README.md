@@ -43,6 +43,7 @@ resolveValue(2)
 //logs 2 to the console
 ```
 What makes Promises so special is that they invoke the callback passed to .then() on the resolved value WHENEVER IT COMES BACK!
+
 An example is in order:
 ```javascript
 var resolveValue = function (value) {
@@ -62,8 +63,11 @@ resolveValue(2)
 ```
 
 This is a great way to deal with async functions in a clean, non-blocking way
+
 Another powerful feature of promises is that the .then() method always returns another promise. 
+
 This means you can keep chaining together functions indefinatly! WOW!
+
 Check it out:
 ```javascript
 var doubler = function(value) {
@@ -81,9 +85,12 @@ resolveValue(2)
     
 //logs 32 to the console one second later
 ```
-As might have noticed, the return value of a callback is passed down to the the input of the callback in the .then() chained below it
+As you might have noticed, the return value of a callback is passed down to the the input of the callback in the .then() chained below it
+
 But what if the callback returns a Promise rather than a resolved value?
+
 Well, this promise class is smart enough to recognize this and try to resolve it with the callback in the .then() chained below.
+
 Check it out:
 ```javascript
 resolveValue(2)
@@ -103,6 +110,7 @@ resolveValue(2)
 ---
 ### .promisify()
 .promisify() takes in a function that would take in a callback and returns a function that takes no callback and instead returns a promise
+
 For example:
 ```javascript
 var fs = require('fs');
@@ -134,7 +142,9 @@ function(err, result) {
 ### Error Handling
 ---
 One other method on a promise object along with .then() is .catch()
+
 .catch() accepts a callback that does something with errors that are thrown in the callback chain\
+
 Lets look at how .catch() works:
 ```javascript
 var shakledReadFile = function(input) {
@@ -173,7 +183,9 @@ shakledReadFile('tHe_WRonG_filEPAth.tXt')
 ---
 ### .raceAll()
 .raceAll() is an interesting built-in function that takes in an array of promises ready to be resolved and resolves the value of which ever one finishes first!
+
 .raceAll() ignores functions in the array that do not return promises when invoked
+
 Let me show ya:
 ```javascript
 var wait = function (time) {
@@ -196,8 +208,11 @@ var wait = function (time) {
 ---
 ## .resolveAll()
 .resolveAll() is a function similar to race, but rather than resolving only the fastest, it resolves an array containing the values from the resolution of all the promises passed in
+
 .resolveAll() also ignores functions in the array that do not return Promises when invoked
+
 ALSO! The promises are resolved in 'parallel' rather than in series so the resolution will only take as long as the slowest promise to resolve.
+
 Observe:
 ```javascript
 Shakle.resolveAll([wait(200), wait(300), wait(100), wait(50), wait(150)])
