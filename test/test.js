@@ -86,12 +86,12 @@ describe('Shakle', function () {
 
     // THIS WILL HAVE TO BE DONE IN CHUNKS, AN "IT" STATEMENT WRAPPING EACK GROWING CHAIN SO YOU CAN USE THE DONE() TRICK EACH TIME YOU ADD SOMETHING TO THE TEST
   
-    xit('(of first) shakled function should return a promise object', function (done) {
-      expect(shakledFn1('test.txt', done) instanceof Shakle).to.be.true;
+    xit('(of first) shakled function should return a promise object', function () {
+      expect(shakledFn1('test.txt') instanceof Shakle).to.be.true;
     });
 
-    xit('(of second) shakled function should return a promise object', function (done) {
-      expect(shakledFn2('{"one": 1, "two": 2, "three": 3}', done) instanceof Shakle).to.be.true;
+    xit('(of second) shakled function should return a promise object', function () {
+      expect(shakledFn2('{"one": 1, "two": 2, "three": 3}') instanceof Shakle).to.be.true;
     });
 
     // it('should change state to "resolved" on resolution', function (done) {
@@ -111,6 +111,15 @@ describe('Shakle', function () {
 
     xit('should resolve the correct data from promisified timeout function', function (done) {
       shakledFn2('{"one": 1, "two": 2, "three": 3}')
+        .then(function (data) {
+          expect(data).to.equal(6);
+          done();
+        });
+    });
+
+    xit('should be able to chain multiple promisified functions', function (done) {
+      shakledFn1('test.txt')
+        .then(shakledFn2)
         .then(function (data) {
           expect(data).to.equal(6);
           done();
@@ -170,31 +179,31 @@ describe('Shakle', function () {
         });
     });
 
-    // Shakle.showCallStack = true; // is this hoisted or something?
+    // Shakle.showCallStack = true; // is this hoisted or something? it makes a test at the top fail...
 
-    var shakledFn1 = function (input, done) {
-      return new Shakle(function (resolve, reject) {
-        fs.readFile(input, 'utf-8', function (err, data) {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(data);
-          }
-          if (done) {done();}
-        });
-      });
-    };
+    // var shakledFn1 = function (input, done) {
+    //   return new Shakle(function (resolve, reject) {
+    //     fs.readFile(input, 'utf-8', function (err, data) {
+    //       if (err) {
+    //         reject(err);
+    //       } else {
+    //         resolve(data);
+    //       }
+    //       if (done) {done();}
+    //     });
+    //   });
+    // };
 
-    var shakledFn2 = function (input, done) {
-      return new Shakle(function (resolve, reject) {
-        setTimeout(function () {                               
-          var result = JSON.parse(input);                      
-          result = +result.one + +result.two + +result.three;  
-          resolve(result);
-          if (done) {done();}
-        }, 200);
-      });
-    };
+    // var shakledFn2 = function (input, done) {
+    //   return new Shakle(function (resolve, reject) {
+    //     setTimeout(function () {                               
+    //       var result = JSON.parse(input);                      
+    //       result = +result.one + +result.two + +result.three;  
+    //       resolve(result);
+    //       if (done) {done();}
+    //     }, 200);
+    //   });
+    // };
 
     xit('should show the full error call stack when "showCallStack" flag is set to true', function (done) {
       shakledFn1('tes.txt')
