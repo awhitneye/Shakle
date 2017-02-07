@@ -23,7 +23,7 @@ Get started by requiring Shakle
 var Shakle = require('shakle.js');
 ```
 
-Now you can start chaining together your TODO!
+Now you can start chaining together your TODOs!
 
 (get it?  'chain together'?? shakle??? ...shutup, it's clever.)
 ```javascript
