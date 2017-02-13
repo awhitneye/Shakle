@@ -18,9 +18,14 @@
 ## Usage
 ---
 
-Get started by requiring Shakle
+Get started by first downloading Shakle from npm
+```sh
+npm install shakle --save
+```
+
+Then require it in your project
 ```javascript
-var Shakle = require('shakle.js');
+var Shakle = require('shakle');
 ```
 
 Now you can start chaining together your TODOs!
