@@ -1,7 +1,8 @@
 {
-  "name": "Desktop",
+  "name": "shakle",
   "version": "1.0.0",
-  "description": "",
+  "description": "A vanilla JS promise library to help with your asynchronous todo list!",
+  "entry point": "lib/shakle.js", 
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -10,8 +11,8 @@
   "scripts": {
     "test": "mocha test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["promise", "polyfill"],
+  "author": "Dylan Larrabee <dylan.r.larrabee@gmail.com> (http://dylanlarrabee.me)",
   "license": "ISC",
   "dependencies": {
     "chai": "^3.5.0",
