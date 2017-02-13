@@ -2,8 +2,7 @@
   "name": "shakle",
   "version": "1.0.0",
   "description": "A vanilla JS promise library to help with your asynchronous todo list!",
-  "entry point": "lib/shakle.js", 
-  "main": "index.js",
+  "main": "lib/shakle.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/npm/npm.git"
