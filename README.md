@@ -51,7 +51,7 @@ What makes Promises so special is that they invoke the callback passed to .then(
 
 An example is in order:
 ```javascript
-var resolveValue = function (value) {
+var resolveValueInOneSecond = function (value) {
     return new Shakle(function(resolve) {
         setTimeout(function() {
              resolve(value);
@@ -59,7 +59,7 @@ var resolveValue = function (value) {
     });
 }
 
-resolveValue(2)
+resolveValueInOneSecond(2)
     .then(function(value) {
         console.log(value)
     })
@@ -79,7 +79,7 @@ var doubler = function(value) {
     return value * 2
 }
 
-resolveValue(2)
+resolveValueInOneSecond(2)
     .then(doubler)
     .then(doubler)
     .then(doubler)
@@ -98,17 +98,17 @@ Well, this promise class is smart enough to recognize this and try to resolve it
 
 Check it out:
 ```javascript
-resolveValue(2)
+resolveValueInOneSecond(2)
     .then(doubler)
-    .then(resolveValue)
+    .then(resolveValueInOneSecond)
     .then(doubler)
-    .then(resolveValue)
+    .then(resolveValueInOneSecond)
     .then(doubler)
     .then(function(value) {
         console.log(value)
     })
     
-//logs 16 to the console TWO SECONDS LATER!
+//logs 16 to the console THREE SECONDS LATER!
 ```
 
 ## Built-in Methods
@@ -136,6 +136,7 @@ Then you could chain together various synchronous and asynchronous functions to 
 shakledReadFile('alphabet.txt', 'utf-8')
     .then(parse)
     .then(sort)
+    .then(send)
     .then(doSomethingElse)
 ```
 Keep in mind that the callback that .promisify() abstracts away needs to be in the format below:
