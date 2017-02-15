@@ -1,6 +1,6 @@
 {
   "name": "shakle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A vanilla JS promise library to help with your asynchronous todo list!",
   "main": "lib/shakle.js",
   "repository": {
