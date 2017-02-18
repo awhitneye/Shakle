@@ -9,7 +9,7 @@
 
 ---
 
-### Shakle is a lightwihgt module that gives you access to a Promise class and some useful methods. All in pure Javascript!
+### Shakle is a lightweihgt module that gives you access to a Promise class and some useful methods. All in pure Javascript!
 
 > DISCLAIMER: The promise class provided almost meets all the specs outlined in [Promise/A+ spec](https://promisesaplus.com/). While this module is completly functional, it is primarily for educational purposes.
 
