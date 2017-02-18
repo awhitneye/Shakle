@@ -1,5 +1,9 @@
 # Shakle
+
+[![npm](https://img.shields.io/npm/dt/express.svg)](https://www.npmjs.com/package/shakle)
+
 #### A vanilla JS promise library to help with your asynchronous todo list!
+
 
 ![ShakleLogo2](https://raw.githubusercontent.com/dylanlrrb/Shakle/master/Shakle2.png)
 
