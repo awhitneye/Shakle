@@ -1,6 +1,7 @@
 # Shakle
 
 [![npm](https://img.shields.io/npm/dt/shakle.svg)](https://www.npmjs.com/package/shakle)
+![travis](https://travis-ci.org/dylanlrrb/Shakle.svg?branch=master)
 
 #### A vanilla JS promise library to help with your asynchronous todo list!
 
@@ -11,7 +12,7 @@
 
 ### Shakle is a lightweight module that gives you access to a Promise class and some useful methods. All in pure Javascript!
 
-> DISCLAIMER: The promise class provided almost meets all the specs outlined in [Promise/A+ spec](https://promisesaplus.com/). While this module is completly functional, it is primarily for educational purposes.
+> DISCLAIMER: The promise class provided almost meets all the specs outlined in [Promise/A+ spec](https://promisesaplus.com/). While this module is completely functional, it is primarily for educational purposes.
 
 #### You have access to:
   - [The Shakle (Promise) class](https://github.com/dylanlrrb/Shakle/blob/master/README.md#usage)
@@ -34,7 +35,7 @@ var Shakle = require('shakle');
 
 Now you can start chaining together your TODOs!
 
-(get it?  'chain together'?? shakle??? ...shutup, it's clever.)
+(get it?  'chain together'?? shakle??? ...shut up, it's clever.)
 ```javascript
 var resolveValue = function (value) {
     return new Shakle(function(resolve) {
@@ -75,7 +76,7 @@ This is a great way to deal with async functions in a clean, easy to read, non-b
 
 Another powerful feature of promises is that the .then() method always returns another promise. 
 
-This means you can keep chaining together functions indefinatly! WOW!
+This means you can keep chaining together functions indefinitely! WOW!
 
 Check it out:
 ```javascript
@@ -155,7 +156,7 @@ One other method on a promise object along with .then() is .catch()
 
 .catch() accepts a callback that does something with errors that are thrown in the callback chain
 
-Lets look at how .catch() works:
+Let's look at how .catch() works:
 ```javascript
 var shakledReadFile = function(input) {
     return new Shakle(function(resolve, reject) {
@@ -194,7 +195,7 @@ shakledReadFile('tHe_WRonG_filEPAth.tXt')
 ##### At this time, this implementation of .catch() only catches handled errors that are explicitly passed to reject. Other errors may be silent. This is something I am working on fixing :)
 ---
 ### .raceAll()
-.raceAll() is an interesting built-in function that takes in an array of promises ready to be resolved and resolves the value of which ever one finishes first!
+.raceAll() is an interesting built-in function that takes in an array of promises ready to be resolved and resolves the value of whichever one finishes first!
 
 .raceAll() ignores functions in the array that do not return promises when invoked
 
@@ -237,8 +238,4 @@ Shakle.resolveAll([wait(200), wait(300), wait(100), wait(50), wait(150)])
 ###### handled errors are excluded from the resolved array but are not passed the .catch() callback... I'm working on this.
 ###### unexpected errors may cause .resolveAll() to never resolve... I'm working on this also.
 ---
-### That's about it! thanks for checking out Shakle!
-
-
-
-
+### That's about it! Thanks for checking out Shakle!
