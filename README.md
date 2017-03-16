@@ -1,7 +1,7 @@
 # Shakle
 
 [![npm](https://img.shields.io/npm/dt/shakle.svg)](https://www.npmjs.com/package/shakle)
-![travis](https://travis-ci.org/dylanlrrb/Shakle.svg?branch=master)
+[![travis](https://travis-ci.org/dylanlrrb/Shakle.svg?branch=master)](https://travis-ci.org/dylanlrrb/Shakle/jobs/211605479)
 
 #### A vanilla JS promise library to help with your asynchronous todo list!
 
