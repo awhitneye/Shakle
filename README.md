@@ -238,4 +238,4 @@ Shakle.resolveAll([wait(200), wait(300), wait(100), wait(50), wait(150)])
 ###### handled errors are excluded from the resolved array but are not passed the .catch() callback... I'm working on this.
 ###### unexpected errors may cause .resolveAll() to never resolve... I'm working on this also.
 ---
-### That's about it! Thanks for checking out Shakle!
+### That's about it! Thanks for checking out Shakle! 
