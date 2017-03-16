@@ -14,7 +14,7 @@
 
 > DISCLAIMER: The promise class provided almost meets all the specs outlined in [Promise/A+ spec](https://promisesaplus.com/). While this module is completely functional, it is primarily for educational purposes.
 
-#### You have access to:
+#### You have access to: 
   - [The Shakle (Promise) class](https://github.com/dylanlrrb/Shakle/blob/master/README.md#usage)
   - [The .promisify() method](https://github.com/dylanlrrb/Shakle/blob/master/README.md#promisify)
   - [The .raceAll() method](https://github.com/dylanlrrb/Shakle/blob/master/README.md#raceall)
